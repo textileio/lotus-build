@@ -1,7 +1,7 @@
 ### Based on ldoublewood <ldoublewood@gmail.com> original Dockerfile, with 
 ### extra additions.
 FROM golang:1.14.2-buster
-MAINTAINER textile <filecoin@textile.io>
+MAINTAINER textile <contact@textile.io>
 
 ENV SRC_DIR /lotus
 
@@ -53,9 +53,6 @@ RUN cd $SRC_DIR \
   && . $HOME/.cargo/env \
   && make $MAKE_TARGET
 
-COPY revproxy /revproxy
-RUN cd /revproxy && go build .
-
 # Now comes the actual target image, which aims to be as small as possible.
 FROM busybox:1-glibc
 MAINTAINER textile <filecoin@textile.io>
@@ -63,7 +60,6 @@ MAINTAINER textile <filecoin@textile.io>
 # Get the executable binary and TLS CAs from the build container.
 ENV SRC_DIR /lotus
 COPY --from=0 $SRC_DIR/lotus /usr/local/bin/lotus
-COPY --from=0 /revproxy/revproxy /usr/local/bin/revproxy
 COPY --from=0 /tmp/su-exec/su-exec /sbin/su-exec
 COPY --from=0 /tmp/tini /sbin/tini
 COPY --from=0 /etc/ssl/certs /etc/ssl/certs
@@ -96,6 +92,5 @@ VOLUME $PARAMCACHE_PATH
 
 USER lotus
 
-COPY entrypoint.sh /entrypoint.sh
 # Execute the daemon subcommand by default
-CMD ["/sbin/tini", "--", "/entrypoint.sh"]
+CMD ["/sbin/tini", "--", "lotus", "daemon"]
