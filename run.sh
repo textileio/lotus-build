@@ -21,7 +21,8 @@ docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
 docker push textile/lotus:$TAG
 docker push textile/lotus:latest
 
-if [[!-z "$TAG_VERSIONED"]]
+echo $TAG_VERSIONED
+if [[ !-z "$TAG_VERSIONED"]]
 then
   docker push textile/lotus:$TAG_VERSIONED
 fi
