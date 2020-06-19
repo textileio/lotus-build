@@ -24,5 +24,6 @@ docker push textile/lotus:latest
 echo $TAG_VERSIONED
 if [ -n "$TAG_VERSIONED" ]
 then
+  docker build -t textile/lotus:$TAG_VERSIONED .
   docker push textile/lotus:$TAG_VERSIONED
 fi
