@@ -22,7 +22,7 @@ docker push textile/lotus:$TAG
 docker push textile/lotus:latest
 
 echo $TAG_VERSIONED
-if [[ !-z "$TAG_VERSIONED"]]
+if [[ !-z "$TAG_VERSIONED" ]]
 then
   docker push textile/lotus:$TAG_VERSIONED
 fi
