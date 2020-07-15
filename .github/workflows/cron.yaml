@@ -20,6 +20,8 @@ jobs:
         with:
           profile: minimal
           toolchain: stable
+      - name: Apt update
+        run: sudo apt-get update
       - name: Install OpenCL
         run: sudo apt-get install mesa-opencl-icd ocl-icd-opencl-dev
       - name: Check out code
