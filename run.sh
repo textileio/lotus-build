@@ -1,9 +1,9 @@
 #!/bin/bash
 
 rm -rf lotus
-git clone --depth=1 https://github.com/filecoin-project/lotus.git -b ntwk-calibration
+git clone --depth=1 https://github.com/filecoin-project/lotus.git -b f094273f8ee037
 cd lotus
-git checkout ntwk-calibration-8.8.0
+git checkout -b ntwk-calibration-8.13.1.f094273
 
 TAG=$(git rev-parse --short HEAD)
 if docker pull textile/lotus:$TAG > /dev/null; then
