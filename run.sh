@@ -1,8 +1,9 @@
 #!/bin/bash
 
 rm -rf lotus
-git clone --depth=1 https://github.com/filecoin-project/lotus.git -b f094273f8ee037
+git clone --depth=1 https://github.com/filecoin-project/lotus.git -b ntwk-calibration
 cd lotus
+git checkout f094273f8ee037
 git checkout -b ntwk-calibration-8.13.1.f094273
 
 TAG=$(git rev-parse --short HEAD)
