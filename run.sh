@@ -2,7 +2,6 @@
 
 rm -rf lotus
 git clone --depth=1 https://github.com/filecoin-project/lotus.git -b nerpa-8.28.0
-cd lotus
 
 TAG=$(git rev-parse --short HEAD)
 if docker pull textile/lotus:nerpa-$TAG > /dev/null; then
