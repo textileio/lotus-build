@@ -13,7 +13,7 @@ else
 fi
 TAG_VERSIONED=$(git describe --exact-match HEAD)
 
-make deps
+RUSTFLAGS="-C target-cpu=native" FFI_BUILD_FROM_SOURCE=1 make deps
 cd ..
 
 docker build -t textile/lotus:$TAG -t textile/lotus:latest .
