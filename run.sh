@@ -7,7 +7,8 @@ cd lotus
 TAG=$(git rev-parse --short HEAD)
 if docker pull textile/lotus:$TAG > /dev/null; then
   echo "Docker image of $TAG already exists, nothing to do."
-  exit 0
+  echo "Doing things anyway..."
+  #exit 0
 else
   echo "Building image..."
 fi
