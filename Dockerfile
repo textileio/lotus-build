@@ -69,7 +69,7 @@ COPY --from=0 /etc/ssl/certs /etc/ssl/certs
 COPY --from=0 /lib/x86_64-linux-gnu/libdl-2.28.so /lib/libdl.so.2
 COPY --from=0 /lib/x86_64-linux-gnu/libutil-2.28.so /lib/libutil.so.1 
 COPY --from=0 /usr/lib/x86_64-linux-gnu/libOpenCL.so.1.0.0 /lib/libOpenCL.so.1
-COPY --from=0 /usr/lib/gcc/x86_64-linux-gnu/8/libstdc++.so /lib/libstdc++.so.1
+COPY --from=0 /usr/lib/gcc/x86_64-linux-gnu/8/libstdc++.so /lib/libstdc++.so.6
 COPY --from=0 /lib/x86_64-linux-gnu/librt-2.28.so /lib/librt.so.1
 COPY --from=0 /lib/x86_64-linux-gnu/libgcc_s.so.1 /lib/libgcc_s.so.1
 
