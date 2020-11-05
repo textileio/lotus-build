@@ -5,7 +5,7 @@ MAINTAINER textile <contact@textile.io>
 
 ENV SRC_DIR /lotus
 
-RUN apt-get update && apt-get install -y ca-certificates llvm clang mesa-opencl-icd ocl-icd-opencl-dev jq
+RUN apt-get update && apt-get install -y ca-certificates llvm clang mesa-opencl-icd ocl-icd-opencl-dev jq libhwloc-dev 
 
 RUN curl -sSf https://sh.rustup.rs | sh -s -- -y
 
