@@ -41,7 +41,7 @@ RUN cd $SRC_DIR \
   && mkdir $SRC_DIR/build \
   && . $HOME/.cargo/env \
   && make clean \
-  && make deps
+  && FFI_BUILD_FROM_SOURCE=1 RUSTFLAGS="-C target-cpu=native -g" CGO_CFLAGS="-D__BLST_PORTABLE__" make deps
 
 
 COPY lotus/ $SRC_DIR
@@ -51,7 +51,7 @@ ARG MAKE_TARGET=lotus
 # Build the thing.
 RUN cd $SRC_DIR \
   && . $HOME/.cargo/env \
-  && make $MAKE_TARGET
+  && FFI_BUILD_FROM_SOURCE=1 RUSTFLAGS="-C target-cpu=native -g" CGO_CFLAGS="-D__BLST_PORTABLE__" make $MAKE_TARGET
 
 # Now comes the actual target image, which aims to be as small as possible.
 FROM busybox:1-glibc
