@@ -73,6 +73,7 @@ COPY --from=0 /usr/lib/gcc/x86_64-linux-gnu/8/libstdc++.so /lib/libstdc++.so.6
 COPY --from=0 /lib/x86_64-linux-gnu/librt-2.28.so /lib/librt.so.1
 COPY --from=0 /lib/x86_64-linux-gnu/libgcc_s.so.1 /lib/libgcc_s.so.1
 COPY --from=0 /usr/lib/x86_64-linux-gnu/libhwloc.so.5 /lib/libhwloc.so.5
+COPY --from=0 /usr/lib/x86_64-linux-gnu/libnuma.so.1 /lib/libnuma.so.1
 
 # WS port
 EXPOSE 1235
