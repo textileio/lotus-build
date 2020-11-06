@@ -74,6 +74,7 @@ COPY --from=0 /lib/x86_64-linux-gnu/librt-2.28.so /lib/librt.so.1
 COPY --from=0 /lib/x86_64-linux-gnu/libgcc_s.so.1 /lib/libgcc_s.so.1
 COPY --from=0 /usr/lib/x86_64-linux-gnu/libhwloc.so.5 /lib/libhwloc.so.5
 COPY --from=0 /usr/lib/x86_64-linux-gnu/libnuma.so.1 /lib/libnuma.so.1
+COPY --from=0 /usr/lib/x86_64-linux-gnu/libltdl.so.7 /lib/libltdl.so.7
 
 # WS port
 EXPOSE 1235
