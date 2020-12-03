@@ -3,7 +3,7 @@
 rm -rf lotus
 git clone https://github.com/filecoin-project/lotus.git
 cd lotus
-git checkout v1.2.1
+git checkout v1.2.2
 
 TAG=$(git rev-parse --short HEAD)
 if docker pull textile/lotus:$TAG > /dev/null; then
