@@ -54,7 +54,7 @@ RUN cd $SRC_DIR \
   && FFI_BUILD_FROM_SOURCE=1 RUSTFLAGS="-C target-cpu=native -g" CGO_CFLAGS="-D__BLST_PORTABLE__" make $MAKE_TARGET
 
 # Now comes the actual target image, which aims to be as small as possible.
-FROM busybox:1-glibc
+FROM ubuntu
 MAINTAINER textile <filecoin@textile.io>
 
 # Get the executable binary and TLS CAs from the build container.
@@ -86,9 +86,9 @@ EXPOSE 5678
 ENV HOME_PATH /data
 ENV PARAMCACHE_PATH /var/tmp/filecoin-proof-parameters
 
-RUN mkdir -p $HOME_PATH $PARAMCACHE_PATH \
-  && adduser -D -h $HOME_PATH -u 1000 -G users lotus \
-  && chown lotus:users $HOME_PATH $PARAMCACHE_PATH
+RUN mkdir -p $HOME_PATH $PARAMCACHE_PATH 
+RUN adduser --disabled-login --disabled-password --home $HOME_PATH --uid 1000 --ingroup users lotus
+RUN chown lotus:users $HOME_PATH $PARAMCACHE_PATH
 
 
 VOLUME $HOME_PATH
